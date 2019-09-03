@@ -4,7 +4,7 @@ using namespace std;
 #include <sys/timeb.h>
 #include <time.h>
 
-void myPrint(vector<int>& v)
+void myPrint(vector<int>& v) //è¾“å‡º
 {
 	for (unsigned int i = 0; i < v.size(); i++)
 	{
@@ -13,10 +13,10 @@ void myPrint(vector<int>& v)
 	cout << endl;
 }
 
-//Ã°Åİ
+//å†’æ³¡
 void bubbleSort(vector<int>& v)
 {
-	//int flag = 1;//0±íÊ¾Ã»ÓĞÅÅºÃ
+	//int flag = 1;//0è¡¨ç¤ºæ²¡æœ‰æ’å¥½
 	for (unsigned int i = 0; i < v.size()/*&&flag*/; i++)
 	{
 		//flag = 0;
@@ -33,7 +33,7 @@ void bubbleSort(vector<int>& v)
 	}
 }
 
-//Ñ¡Ôñ
+//é€‰æ‹©
 void selectSort(vector<int>& v)
 {
 	for (unsigned int i = 0; i < v.size(); i++)
@@ -55,7 +55,7 @@ void selectSort(vector<int>& v)
 	}
 }
 
-//²åÈë
+//æ’å…¥
 void insertSort(vector<int>& v)
 {
 	for (int i = 1; i < v.size(); i++)
@@ -70,16 +70,16 @@ void insertSort(vector<int>& v)
 	}
 }
 
-//Ï£¶û
+//å¸Œå°”
 void shellSort(vector<int>& v)
 {
 	int increasement = v.size();
 	while (true)
 	{
 		increasement = increasement / 3 + 1;
-		for (int i = 0; i < increasement; i++) //·ÖÎªincreasement×é
+		for (int i = 0; i < increasement; i++) //åˆ†ä¸ºincreasementç»„
 		{
-			//ÄÚ²¿½øĞĞ²åÈëÅÅĞò
+			//å†…éƒ¨è¿›è¡Œæ’å…¥æ’åº
 			for (int j = i + increasement; j < v.size(); j += increasement)
 			{
 				if (v[j] < v[j - increasement])
@@ -94,8 +94,8 @@ void shellSort(vector<int>& v)
 				}
 			}
 		}
-		//increasement / 3 + 1×îÖÕ»á±äÎª1£¬ÇÒÊ¼ÖÕÎª1£¬
-		//µ«µÈÓÚ1Ê±Ö»Ñ­»·Ò»´Î¾Í±ØĞëÍË³ö£¬¹Ê¼ÓÁËÒ»¸öÍË³öÌõ¼ş£»
+		//increasement / 3 + 1æœ€ç»ˆä¼šå˜ä¸º1ï¼Œä¸”å§‹ç»ˆä¸º1ï¼Œ
+		//ä½†ç­‰äº1æ—¶åªå¾ªç¯ä¸€æ¬¡å°±å¿…é¡»é€€å‡ºï¼Œæ•…åŠ äº†ä¸€ä¸ªé€€å‡ºæ¡ä»¶ï¼›
 		if (increasement == 1)
 		{
 			break;
@@ -103,7 +103,7 @@ void shellSort(vector<int>& v)
 	}
 }
 
-//¿ìËÙ
+//å¿«é€Ÿ
 void quickSort(vector<int>& v, int start, int end)
 {
 	int i = start, j = end;
@@ -112,47 +112,47 @@ void quickSort(vector<int>& v, int start, int end)
 		int base = v[start];
 		while (i < j)
 		{
-			//´ÓÓÒÏò×óÕÒ±ÈbaseĞ¡µÄÊı
+			//ä»å³å‘å·¦æ‰¾æ¯”baseå°çš„æ•°
 			while (base <= v[j] && i < j)
 			{
 				j--;
 			}
-			//Ìî¿Ó
+			//å¡«å‘
 			if (i < j)
 			{
 				v[i] = v[j];
 				i++;
 			}
-			//´Ó×óÏòÓÒÕÒ±Èbase´óµÄÊı
+			//ä»å·¦å‘å³æ‰¾æ¯”baseå¤§çš„æ•°
 			while (base > v[i] && i < j)
 			{
 				i++;
 			}
-			//Ìî¿Ó
+			//å¡«å‘
 			if (i < j)
 			{
 				v[j] = v[i];
 				j--;
 			}
 		}
-		v[i] = base; //ÕÒµ½ÁËbaseÔÚĞòÁĞÖĞµÄÎ»ÖÃ£¬×ó±ßµÄ±Èbase¶¼Ğ¡£¬ÓÒ±ßµÄ±Èbase¶¼´ó
+		v[i] = base; //æ‰¾åˆ°äº†baseåœ¨åºåˆ—ä¸­çš„ä½ç½®ï¼Œå·¦è¾¹çš„æ¯”baseéƒ½å°ï¼Œå³è¾¹çš„æ¯”baseéƒ½å¤§
 		quickSort(v, start, i - 1);
 		quickSort(v, i + 1, end);
 	}
 }
 
-//¹é²¢ÅÅĞò
+//å½’å¹¶æ’åº
 void merge(vector<int>& v, int start, int end, int middle, vector<int>& v2)
 {
 	int i_start = start;
 	int i_end = middle;
 	int j_start = middle + 1;
 	int j_end = end;
-	//¿ªÊ¼ºÏ²¢Á½¸öĞòÁĞ
+	//å¼€å§‹åˆå¹¶ä¸¤ä¸ªåºåˆ—
 	int length = 0;
 	while (i_start <= i_end && j_start <= j_end)
 	{
-		if (v[i_start] <v[ j_start])
+		if (v[i_start] < v[j_start])
 		{
 			v2[length] = v[i_start];
 			i_start++;
@@ -165,7 +165,7 @@ void merge(vector<int>& v, int start, int end, int middle, vector<int>& v2)
 			length++;
 		}
 	}
-	//½«i»òjÊ£ÓàĞòÁĞ¼ÓÈëµ½v2ºóÃæ
+	//å°†iæˆ–jå‰©ä½™åºåˆ—åŠ å…¥åˆ°v2åé¢
 	while (i_start <= i_end)
 	{
 		v2[length] = v[i_start];
@@ -178,12 +178,13 @@ void merge(vector<int>& v, int start, int end, int middle, vector<int>& v2)
 		j_start++;
 		length++;
 	}
-	//¸²¸ÇÔ­À´¿Õ¼äv
+	//è¦†ç›–åŸæ¥ç©ºé—´v
 	for (int i = 0; i < length; i++)
 	{
 		v[start + i] = v2[i];
 	}
 }
+
 void mergeSort(vector<int>& v, int start, int end, vector<int>& v2)
 {
 	if (start >= end)
@@ -191,9 +192,54 @@ void mergeSort(vector<int>& v, int start, int end, vector<int>& v2)
 		return;
 	}
 	int middle = (start + end) / 2;
-	mergeSort(v, start, middle, v2); //×ó±ß
-	mergeSort(v, middle + 1, end, v2); //ÓÒ±ß
+	mergeSort(v, start, middle, v2); //å·¦è¾¹
+	mergeSort(v, middle + 1, end, v2); //å³è¾¹
 	merge(v, start, end, middle, v2);
+}
+
+//å †æ’åº
+void Swap_i_j(vector<int>& v, int i, int j)
+{
+	int temp = v[i];
+	v[i] = v[j];
+	v[j] = temp;
+}
+
+void heapAdjust(vector<int>& v, int index,int len)
+{
+	//å› ä¸ºèŠ‚ç‚¹ä»0å¼€å§‹ï¼Œæ‰€ä»¥å·¦å­©å­èŠ‚ç‚¹=*2+1ï¼›
+	int max = index;
+	int lchild = index * 2 + 1;
+	int rchild = index * 2 + 2;
+
+	if (lchild <= len && v[max] < v[lchild])
+	{
+		max = lchild;
+	}
+	if (rchild <= len && v[max] < v[rchild])
+	{
+		max = rchild;
+	}
+	if (max != index)
+	{
+		Swap_i_j(v, max, index);
+		heapAdjust(v, max,len);
+	}
+}
+
+void heapSort(vector<int>& v)
+{
+	//åˆå§‹åŒ–ä¸ºå¤§é¡¶å †
+	for (int i = v.size() / 2 - 1; i >= 0; i--)
+	{
+		heapAdjust(v, i,v.size()-1);
+	}
+	//å°†0ä½ç½®çš„æœ€å¤§å€¼å’Œæœ€åä¸€ä¸ªèŠ‚ç‚¹äº¤æ¢.ä¹‹åå†å°†0ä½ç½®çš„ç¬¬äºŒå¤§çš„å€¼ä¸å€’æ•°ç¬¬äºŒä¸ªèŠ‚ç‚¹äº¤æ¢
+	for (int i = v.size() - 1; i >=0; i--)
+	{
+		Swap_i_j(v, 0,  i);
+		heapAdjust(v, 0,i-1);
+	}
 }
 
 int main(int argc, char* argv[])
@@ -201,27 +247,28 @@ int main(int argc, char* argv[])
 	struct timeb t1, t2;
 
 	vector<int> v;
-	vector<int> v2; //¸¨Öú¿Õ¼ä
+	vector<int> v2; //è¾…åŠ©ç©ºé—´
 	srand((unsigned int)time(nullptr));
 	for (unsigned int i = 10; i > 0; i--)
 	{
 		v.push_back(i);
 	}
 	v2.resize(v.size());
-	cout << "ÅÅĞòÇ°£º" << endl;
+	cout << "æ’åºå‰ï¼š" << endl;
 	myPrint(v);
-	cout << "ÅÅĞòºó£º" << endl;
+	cout << "æ’åºåï¼š" << endl;
 	ftime(&t1);
 	//bubbleSort(v);
 	//selectSort(v);
 	//insertSort(v);
 	//shellSort(v);
 	//quickSort(v, 0, v.size() - 1);
-	mergeSort(v, 0, v.size() - 1, v2);
+	//mergeSort(v, 0, v.size() - 1, v2);
+	//heapSort(v);
 	ftime(&t2);
 	myPrint(v);
 
-	cout << "»¨·ÑÁË£º" << t2.time * 1000 + t2.millitm - t1.time * 1000 - t1.millitm << "ms" << endl;
+	cout << "èŠ±è´¹äº†ï¼š" << t2.time * 1000 + t2.millitm - t1.time * 1000 - t1.millitm << "ms" << endl;
 	system("pause");
 	return 0;
 }
