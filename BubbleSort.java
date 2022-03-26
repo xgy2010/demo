@@ -4,13 +4,6 @@ import java.util.Arrays;
 
 public class BubbleSort {
     public static void normalSort(int[] arr) {
-//        for (int i = arr.length - 1; i >= 0; i--) {
-//            for (int j = 0; j < i; j++) {
-//                if (arr[j] > arr[j + 1]) {
-//                    swap(arr, j, j + 1);
-//                }
-//            }
-//        }
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
@@ -33,7 +26,6 @@ public class BubbleSort {
             if (!flag) {
                 break;
             }
-            //System.out.println("第" + Integer.toString(i + 1) + "次的结果是：" + Arrays.toString(arr));
         }
     }
 
